@@ -33,7 +33,7 @@ enum layers {
 #define HOME_I LGUI_T(KC_I)
 
 // Layer swapping TODO: FINISH IMPLEMENTATION
-#define T_MEDIA LT(_MEDIA, KC_LGUI)
+#define T_MEDIA LT(_MEDIA, KC_ESC)
 #define T_NAV   LT(_NAV, KC_SPC)
 #define T_VIM   LT(_VIM, KC_TAB)
 #define T_SYM   LT(_SYMBOL, KC_ENT)
@@ -54,7 +54,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |      |      |      |      |      |      |       |    |       |      |      |   "  |   :  |   ?  |      |
  * |      |   Z  |   Q  |   X  |   H  |   P  |-------|    |-------|   W  |   C  |   '  |   ;  |   /  |      |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
- *                   | LAlt | LGUI |SPACE | /  TAB  /       \ENTER \  |Bkspc |BackSP| RGUI |
+ *                   |       | ESC  |SPACE | /  TAB  /       \ENTER \  |Bkspc |BackSP|      |
  *                   |      | MEDIA|  NAV |/   VIM /         \ SYM  \ | NUM  | FUN  |      |
  *                   `----------------------------'           '------''--------------------'
  */
