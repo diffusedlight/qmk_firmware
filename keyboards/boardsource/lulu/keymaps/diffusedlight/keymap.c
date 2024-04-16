@@ -41,7 +41,7 @@ enum layers {
 #define T_VIM   LT(_VIM, KC_TAB)
 #define T_SYM   LT(_SYMBOL, KC_ENT)
 #define T_NUM   LT(_NUM, KC_BSPC)
-#define T_FUN   LT(_FUN, KC_DEL)
+#define T_FUN   LT(_FUN, QK_REP)
 
 // Oneshot Shift
 #define OS_LSFT OSM(MOD_LSFT)
