@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include QMK_KEYBOARD_H
+#include "features/achordion.h"
 
 enum layers {
     _ALPHA,
@@ -21,16 +22,18 @@ enum layers {
 // Aliases for home row mods.
 
 //    Left Side
-#define HOME_S LGUI_T(KC_S)
-#define HOME_T LALT_T(KC_T)
-#define HOME_R LCTL_T(KC_R)
-#define HOME_N LSFT_T(KC_N)
-
-//    Right Side
-#define HOME_M LSFT_T(KC_M)
-#define HOME_A LCTL_T(KC_A)
-#define HOME_E LALT_T(KC_E)
 #define HOME_I LGUI_T(KC_I)
+#define HOME_E LALT_T(KC_E)
+#define HOME_A LCTL_T(KC_A)
+#define HOME_H LSFT_T(KC_H)
+
+//    Right Side 
+// mirroring left side mods so both hands implement same functionality
+// no AltGr bull 
+#define HOME_S LSFT_T(KC_S)
+#define HOME_T LCTL_T(KC_T)
+#define HOME_R LALT_T(KC_R)
+#define HOME_N LGUI_T(KC_N)
 
 // Layer swapping TODO: FINISH IMPLEMENTATION
 #define T_MEDIA LT(_MEDIA, KC_ESC)
@@ -40,32 +43,35 @@ enum layers {
 #define T_NUM   LT(_NUM, KC_BSPC)
 #define T_FUN   LT(_FUN, KC_DEL)
 
+// Oneshot Shift
+#define OS_LSFT OSM(MOD_LSFT)
+
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
- 
-/* ALPHA
- * ,-----------------------------------------.                    ,-----------------------------------------.
- * |      |      |      |      |      |      |                    |      |      |      |      |      | GAME |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |   F  |   D  |   L  |   B  |   V  |                    |   J  |   G  |   O  |   U  |   -  |      |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |   S  |   T  |   R  |   N  |   K  |-------.    ,-------|   Y  |   M  |   A  |   E  |   I  |      |
-   |HYPER |SUPER | ALT  | CTRL | SHIFT|      |   <   |    |   >   |      | SHIFT| CTRL |  ALT | SUPER|HYPER |
- * |------+------+------+------+------+------|   ,   |    |   .   |------+------+------+------+------+------|
- * |      |      |      |      |      |      |       |    |       |      |      |   "  |   :  |   ?  |      |
- * |      |   Z  |   Q  |   X  |   H  |   P  |-------|    |-------|   W  |   C  |   '  |   ;  |   /  |      |
- * `-----------------------------------------/       /     \      \-----------------------------------------'
- *                   |       | ESC  |SPACE | /  TAB  /       \ENTER \  |Bkspc |BackSP|      |
- *                   |      | MEDIA|  NAV |/   VIM /         \ SYM  \ | NUM  | FUN  |      |
- *                   `----------------------------'           '------''--------------------'
+
+
+/*  Alpha Layout - Mirrored Gallium v2
+ * , U O F J - V C D L B
+ * I E A H Y - G S T R N 
+ * . ; ' P K - Z W M Q X
+ *
+ * Thumbs:
+ * OS_SFT ESC SPACE TAB - ENTER BKSPC REPEAT OS_SFT
+ * 
+ * HOME ROW MODS: 
+ * G A C S X - S C A G
+ *
+ * ENCODER KEYS?
+ * _ - \
  */
 
 // TODO: Update the layout to above
  [_ALPHA] = LAYOUT(
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, SW_GAME,
-  XXXXXXX,    KC_F,    KC_D,    KC_L,    KC_B,    KC_V,                     KC_J,    KC_G,    KC_O,    KC_U,KC_MINUS, XXXXXXX,
-  KC_HYPR,  HOME_S,  HOME_T,  HOME_R,  HOME_N,    KC_K,                     KC_Y,  HOME_M,  HOME_A,  HOME_E,  HOME_I, KC_HYPR,
-  XXXXXXX,    KC_Z,    KC_Q,    KC_X,    KC_H,    KC_P, KC_COMM,  KC_DOT,   KC_W,    KC_C, KC_QUOT, KC_SCLN, KC_SLSH, XXXXXXX,
-                             XXXXXXX, T_MEDIA,   T_NAV,   T_VIM,   T_SYM,  T_NUM,   T_FUN, XXXXXXX
+  XXXXXXX, KC_COMM,    KC_U,    KC_O,    KC_F,    KC_J,                     KC_V,    KC_C,    KC_D,    KC_L,    KC_B, XXXXXXX,
+  XXXXXXX,  HOME_I,  HOME_E,  HOME_A,  HOME_H,    KC_Y,                     KC_G,  HOME_S,  HOME_T,  HOME_R,  HOME_N, XXXXXXX,
+  XXXXXXX,  KC_DOT, KC_SCLN, KC_QUOT,    KC_P,    KC_K,KC_MINUS, KC_BSLS,   KC_Z,    KC_W,    KC_M,    KC_Q,    KC_X, XXXXXXX,
+                             OS_LSFT, T_MEDIA,   T_NAV,   T_VIM,   T_SYM,  T_NUM,   T_FUN, OS_LSFT
 ),
 /* NUM
  * ,-----------------------------------------.                    ,-----------------------------------------.
@@ -226,3 +232,36 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 };
 
+bool process_record_user(uint16_t keycode, keyrecord_t* record) {
+  if (!process_achordion(keycode, record)) { return false; }
+  
+  // macros here
+
+  return true;
+}
+
+void matrix_scan_user(void) {
+  achordion_task();
+}
+
+// Combos - Stolen from urobs ZMK Config
+enum combos {
+  // Left Hand Horizontal
+  WE_ESC,
+  ER_ENT,  
+  SD_TAB,
+  DF_REP,
+};
+
+// Left Hand Horizontal
+const uint16_t PROGMEM we_combo[] = {KC_W, KC_E, COMBO_END};
+const uint16_t PROGMEM er_combo[] = {KC_E, KC_R, COMBO_END};
+const uint16_t PROGMEM sd_combo[] = {KC_S, KC_D, COMBO_END};
+const uint16_t PROGMEM df_combo[] = {KC_D, KC_F, COMBO_END};
+
+combo_t key_combos[] = {
+  [WE_ESC] = COMBO(we_combo, KC_ESC),
+  [ER_ENT] = COMBO(er_combo, KC_ENT),
+  [SD_TAB] = COMBO(sd_combo, KC_TAB),
+  [DF_REP] = COMBO(df_combo, QK_REP),
+}; 
