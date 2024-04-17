@@ -1,0 +1,62 @@
+- Migrate to using Mirrored Gallium v2 layout as base layer.
+* MIRRORED GALLIUM V2
+
+Bring vowel usage over to the left hand
+
+, U O F J - V C D L B
+I E A H Y - G S T R N 
+. ; ' P K - Z W M Q X
+
+- Look into a replacement for symbol layers:
+
+
+Combos:
+Works by chording two or more keys, ex; A + B = ESC
+
+If we implement combos these should only work on the base layer.
+
+LT4 LT3 LT2 LT1 LT0 - RT0 RT1 RT2 RT3 RT4
+LH4 LH3 LH2 LH1 LH0 - RH0 RH1 RH2 RH3 RH4
+LB4 LB3 LB2 LB1 LB0 - RB0 RB1 RB2 RB3 RB4
+        L03 L02 L01 - R01 R02 R03
+
+
+HORIZONTAL COMBOS:
+
+LEFT HAND:
+LH3 + LH2 = (
+LH2 + LH1 = )
+NUM + LH3 + LH2 = [
+NUM + LH2 + LH1 = ]
+LH1 + LH0 = =
+LT1 + LT0 = +
+LB3 + LB2 = {
+LB2 + LB1 = }
+NUM + LB3 + LB2 = <
+NUM + LB2 + LB1 = >
+
+RIGHT HAND:
+RH1 + RH2 = REPEAT
+
+
+VERTICAL COMBOS:
+LH3 + LT3 = @
+LH2 + LT2 = #
+LH1 + LT1 = $
+LH0 + LT0 = !
+LB0 + LHO = -
+LB1 + LH1 = _
+LB2 + LH2 = /
+
+RB0 + RH0 = ~
+RB1 + RH1 = |
+RB2 + RH2 = \
+RB3 + RH3 = `
+RH2 + RT2 = *
+RH1 + RT1 = &
+RH0 + RT0 = ^
+RH3 + RT3 = %
+
+Leader:
+Works like an emacs/vim leader key, ex; LEADER q = ( 
+
