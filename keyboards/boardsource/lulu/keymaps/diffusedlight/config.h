@@ -7,3 +7,4 @@
 #define NO_ALT_REPEAT_KEY
 #define ONESHOT_TAP_TOGGLE 3 // Tapping 3 times holds key until tapped again
 #define ONESHOT_TIMEOUT 5000
+#define COMBO_TERM 20
