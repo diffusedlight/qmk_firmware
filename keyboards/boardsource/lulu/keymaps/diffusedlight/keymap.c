@@ -51,18 +51,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 /*  Alpha Layout - Mirrored Gallium v2
- * , U O F J - V C D L B
- * I E A H Y - G S T R N 
- * . ; ' P K - Z W M Q X
  *
- * Thumbs:
- * OS_SFT ESC SPACE TAB - ENTER BKSPC REPEAT OS_SFT
- * 
+ * XXX XXX XXX XXX XXX XXX     -     XXX XXX XXX XXX XXX XXX
+ * XXX  ,   U   O   F   J      -       V   C   D   L   B XXX
+ * XXX  I   E   A   H   Y      -       G   S   T   R   N XXX
+ * XXX  .   ;   '   P   K   -  -  \    Z   W   M   Q   X XXX
+ *             OSS ESC SPC TAB - ENT BKS REP OSS
+ *
  * HOME ROW MODS: 
- * G A C S X - S C A G
- *
- * ENCODER KEYS?
- * _ - \
+ * GACS - SCAG
+ * OSS = One Shot Shift
  */
 
 // TODO: Update the layout to above
@@ -75,16 +73,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 /*  Symbol Layout - Miryoku Based 
- * , U O F J - V C D L B
- * I E A H Y - G S T R N 
- * . ; ' P K - Z W M Q X
  *
- * Thumbs:
- * OS_SFT ESC SPACE TAB - ENTER BKSPC REPEAT OS_SFT
+ * XXX XXX XXX XXX XXX XXX      -     XXX XXX XXX XXX XXX XXX
+ * XXX  {   &   *   (   }       -     XXX XXX XXX XXX XXX XXX
+ * XXX  `   E   A   ^   +       -     XXX SFT CTL ALT GUI XXX
+ * XXX  ?   !   @   #   |  XXX  - XXX XXX XXX XXX XXX XXX XXX
+ *             XXX  (   )   _   - ___ XXX XXX XXX	     
  * 
- *
- * ENCODER KEYS?
- * _ - \
  */
 
 // TODO: Update the layout to above
@@ -99,121 +94,107 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /*
  * Num Layout - HR Mods Right Side
- * _ # 7 8 9 / - _ _ _ _ _
- * _ & 4 5 6 = - _ S C A G
- * _ * 1 2 3 \ - _ * _ _ _
- *   _ ` 0 -
+ *
+ * XXX XXX XXX XXX XXX XXX      -     XXX XXX XXX XXX XXX XXX
+ * XXX  [   7   8   9   ]       -     XXX XXX XXX XXX XXX XXX
+ * XXX  `   4   5   6   =       -     XXX SFT CTL ALT GUI XXX
+ * XXX  /   1   2   3   |  XXX  - XXX XXX XXX XXX XXX XXX XXX
+ *             XXX  .   0   -   - ___ XXX XXX XXX
+ * 
  */
 
 [_NUM] = LAYOUT(
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, KC_LBRC,    KC_7,    KC_8,    KC_9, KC_RBRC,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  XXXXXXX, KC_TILD,    KC_4,    KC_5,    KC_6,  KC_EQL,                   XXXXXXX, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI, KC_HYPR,
-  XXXXXXX, KC_SLSH,    KC_1,    KC_2,    KC_3, KC_BSLS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                             XXXXXXX,  KC_GRV,    KC_0, KC_MINS, XXXXXXX, _______, XXXXXXX, XXXXXXX
+  XXXXXXX,  KC_GRV,    KC_4,    KC_5,    KC_6,  KC_EQL,                   XXXXXXX, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI, KC_HYPR,
+  XXXXXXX, KC_BSLS,    KC_1,    KC_2,    KC_3, KC_SLSH, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+                             XXXXXXX,  KC_DOT,    KC_0, KC_MINS, XXXXXXX, _______, XXXXXXX, XXXXXXX
 ),
+
 /* NAV
- * ,-----------------------------------------.                    ,-----------------------------------------.
- * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |      |      |      |      |                    | DEL  |      |      |      |      |      |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | HYPER| SUPER|  ALT | CTRL | SHIFT|      |-------.    ,-------| LEFT | DOWN |  UP  |RIGHT |      |      |
- * |------+------+------+------+------+------|       |    |  CL*  |------+------+------+------+------+------|
- * |      |      |      |      |      |      |-------|    |-------| HOME | INS  |      | END  |      |      |
- * `-----------------------------------------/       /     \      \-----------------------------------------'
- *                   |      |      | NAV  | /       /       \      \  |      |      |      |
- *                   |      |      |      |/       /         \      \ |      |      |      |
- *                   `----------------------------'           '------''--------------------'
+ *
+ * XXX XXX XXX XXX XXX XXX      -     XXX XXX XXX XXX XXX XXX
+ * XXX XXX XXX XXX XXX XXX      -     DEL XXX XXX XXX XXX XXX
+ * XXX XXX GUI ALT CTL SFT      -     XXX LFT DWN  UP RIT XXX
+ * XXX XXX XXX XXX XXX XXX XXX  - CW  XXX HOM INS XXX END XXX
+ *             XXX XXX XXX ___  - XXX XXX XXX XXX
+ * 
+ * CW = Caps Word 
  */
 
   [_NAV] = LAYOUT(
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                     KC_DEL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  KC_HYPR, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,                    KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT, XXXXXXX, XXXXXXX,
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, CW_TOGG,  KC_HOME,  KC_INS, XXXXXXX,  KC_END, XXXXXXX, XXXXXXX,
+  XXXXXXX, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,                    XXXXXXX, KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT, XXXXXXX, 
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, CW_TOGG,  XXXXXXX, KC_HOME,  KC_INS, XXXXXXX,  KC_END, XXXXXXX,
                              XXXXXXX, XXXXXXX, _______, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX
   ),
+
 /* VIM
- * ,-----------------------------------------.                    ,-----------------------------------------.
- * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |      |      |      |      |                    |  DEL |      |      |      |      |      |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | HYPER| SUPER|  ALT | CTRL | SHIFT|      |-------.    ,-------|  H   |   J  |   K  |  L   |      |      |
- * |------+------+------+------+------+------|       |    |  CL*  |------+------+------+------+------+------|
- * |      |      |      |      |      |      |-------|    |-------| HOME |  INS |      |  END |      |      |
- * `-----------------------------------------/       /     \      \-----------------------------------------'
- *                   |      |      |      | /  VIM  /       \      \  |      |      |      |
- *                   |      |      |      |/       /         \      \ |      |      |      |
- *                   `----------------------------'           '------''--------------------'
+ *
+ * XXX XXX XXX XXX XXX XXX      -     XXX XXX XXX XXX XXX XXX
+ * XXX XXX XXX XXX XXX XXX      -     DEL XXX XXX XXX XXX XXX
+ * XXX GUI ALT CTL SFT XXX      -     XXX LFT DWN  UP RIT XXX
+ * XXX XXX XXX XXX XXX XXX XXX  - CW  XXX HOM INS XXX END XXX
+ *             XXX XXX XXX ___  - XXX XXX XXX XXX
+ * 
+ * CW = Caps Word 
  */
 
   [_VIM] = LAYOUT(
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                    KC_DEL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  KC_HYPR, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,                      KC_H,    KC_J,    KC_K,    KC_L, XXXXXXX, XXXXXXX,
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, CW_TOGG, KC_HOME,  KC_INS, XXXXXXX,  KC_END, XXXXXXX, XXXXXXX,
+  XXXXXXX, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,                   XXXXXXX,    KC_H,    KC_J,    KC_K,    KC_L, XXXXXXX,
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, CW_TOGG, XXXXXXX, KC_HOME,  KC_INS, XXXXXXX,  KC_END, XXXXXXX,
                              XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
   ),
-/* MEDIA TODO: SHIFT INNER ROW ON LEFT SIDE TO OUTER COLUMN MOVE EVERYTHING ONE LEFT
- * ,-----------------------------------------.                    ,-----------------------------------------.
- * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |      |      |      |      |                    | RGB.T| RGB.F| V.UP | V.DWN| RGB.F|      |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | HYPER| SUPER|  ALT | CTRL | SHIFT|      |-------.    ,-------| P.SCN| S.BWD| START| STOP | S.FWD|      |
- * |------+------+------+------+------+------|       |    | V.MUTE|------+------+------+------+------+------|
- * |      |      |      |      |      |      |-------|    |-------|      |      |      |      |      |      |
- * `-----------------------------------------/       /     \      \-----------------------------------------'
- *                   |      | MEDIA|      | /       /       \      \  |      |      |      |
- *                   |      |      |      |/       /         \      \ |      |      |      |
- *                   `----------------------------'           '------''--------------------'
+
+/* MEDIA
+ *
+ * XXX XXX XXX XXX XXX XXX      -     XXX XXX XXX XXX XXX XXX
+ * XXX XXX XXX XXX XXX XXX      -     XXX VUP VDN XXX XXX XXX
+ * XXX GUI ALT CTL SFT XXX      -     PSC PRV PLY STP NXT XXX
+ * XXX XXX XXX XXX XXX XXX XXX  - MUT XXX XXX XXX XXX XXX XXX
+ *             XXX ___ XXX XXX  - XXX XXX XXX XXX
+ * 
+ * PSC = Print Screen
  */
 
   [_MEDIA] = LAYOUT(
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   RGB_TOG, RGB_MOD, KC_VOLU, KC_VOLD, RGB_RMOD, XXXXXXX,
-  KC_HYPR, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,                   KC_PSCR, KC_MPRV, KC_MPLY, KC_MSTP, KC_MNXT, XXXXXXX,
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, KC_VOLU, KC_VOLD, XXXXXXX, XXXXXXX,
+  XXXXXXX, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,                   KC_PSCR, KC_MPRV, KC_MPLY, KC_MSTP, KC_MNXT, XXXXXXX,
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MUTE, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                              XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
   ),
+
 /* FUN
- * ,-----------------------------------------.                    ,-----------------------------------------.
- * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      | F12  |  F7  |  F8  |  F9  |      |                    |      |      |      |      |      |      |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      | F11  |  F4  |  F5  |  F6  |      |-------.    ,-------|      | SHIFT| CTRL | ALT  | SUPER|HYPER |
- * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
- * |      | F10  |  F1  |  F2  |  F3  |      |-------|    |-------|      |      |      |      |      |      |
- * `-----------------------------------------/       /     \      \-----------------------------------------'
- *                   |      | MENU |  SPC | /  TAB  /       \      \  |      |      |      |
- *                   |      |      |      |/       /         \      \ |      |      | FUN  |
- *                   `----------------------------'           '------''--------------------'
+ *
+ * XXX XXX XXX XXX XXX XXX       -     XXX XXX XXX XXX XXX XXX
+ * XXX F12  F7  F8  F9 XXX       -     XXX XXX XXX XXX XXX XXX
+ * XXX F11  F4  F5  F6 XXX       -     XXX SFT CTL ALT GUI XXX
+ * XXX F10  F1  F2  F3 XXX XXX   - XXX XXX XXX XXX XXX XXX XXX
+ *             XXX APP SPC TAB   - ___ XXX XXX XXX
+ * 
  */
 
 
   [_FUN] = LAYOUT(
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  XXXXXXX, KC_F12, KC_F7, KC_F8, KC_F9, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  XXXXXXX, KC_F11, KC_F4, KC_F5, KC_F6, XXXXXXX,                   XXXXXXX, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI, KC_HYPR,
-  XXXXXXX, KC_F10, KC_F1, KC_F2, KC_F3, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                             XXXXXXX, KC_APP, KC_SPC, KC_TAB, XXXXXXX, XXXXXXX, XXXXXXX, _______
-  ),
+  XXXXXXX,  KC_F12,   KC_F7,   KC_F8,   KC_F9, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX,  KC_F11,   KC_F4,   KC_F5,   KC_F6, XXXXXXX,                   XXXXXXX, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI, KC_HYPR,
+  XXXXXXX,  KC_F10,   KC_F1,   KC_F2,   KC_F3, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+                             XXXXXXX,  KC_APP,  KC_SPC,  KC_TAB, XXXXXXX, XXXXXXX, XXXXXXX, _______
+  ), 
+
 /* GAME
- * ,-----------------------------------------.                    ,-----------------------------------------.
- * | ESC  |   1  |   2  |   3  |   4  |  5   |                    |   6  |   7  |   8  |   9  |   0  | GTB  |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |   `  |   Q  |   W  |   E  |   R  |  T   |                    |   Y  |   U  |   I  |   O  |   P  |  -   |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | CTRL |   A  |   S  |   D  |   F  |  G   |-------.    ,-------|   H  |   J  |   K  |   L  |   ;  |  '   |
- * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
- * |SHIFT |   Z  |   X  |   C  |   V  |  B   |-------|    |-------|   N  |   M  |   ,  |   .  |   /  | SHIFT|
- * `-----------------------------------------/       /     \      \-----------------------------------------'
- *                   |  ALT | ALT  |  SPC | /  TAB  /       \ ENTER\  | BKSPC| SUPER|      |
- *                   |      |      |      |/       /         \      \ |      |      |      |
- *                   `----------------------------'           '------''--------------------'
+ *
+ * ESC  1   2   3   4   5        -      6   7   8   9   0  SWB
+ * GRV  Q   W   E   R   T       -       Y   U   I   O   P   - 
+ * CTL  A   S   D   F   G       -       H   J   K   L   ;   '
+ * SFT  Z   X   C   V   B  XXX   - XXX  N   M   ,   .   /   ` 
+ *             ALT ALT SPC TAB   - ENT BSP GUI XXX
+ * 
  */
 
 
@@ -222,7 +203,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_GRV, KC_Q, KC_W, KC_E, KC_R, KC_T,                    KC_Y,    KC_U,     KC_I,    KC_O,    KC_P,KC_MINUS,
   KC_LCTL, KC_A, KC_S, KC_D, KC_F, KC_G,                   KC_H,    KC_J,     KC_K,    KC_L, KC_SCLN, KC_QUOT,
   KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, XXXXXXX, XXXXXXX, KC_N,    KC_M,  KC_COMM,  KC_DOT, KC_SLSH,  KC_GRV,
-                KC_LALT, KC_LALT,  KC_SPC,KC_TAB,  KC_ENT,   KC_BSPC, KC_LGUI,  _______
+                KC_LALT, KC_LALT,  KC_SPC,KC_TAB,  KC_ENT,   KC_BSPC, KC_LGUI,  XXXXXXX
   ),
 };
 
