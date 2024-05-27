@@ -38,7 +38,6 @@ NUM + LB2 + LB1 = >
 RIGHT HAND:
 RH1 + RH2 = REPEAT
 
-
 VERTICAL COMBOS:
 LH3 + LT3 = @
 LH2 + LT2 = #
@@ -57,6 +56,49 @@ RH1 + RT1 = &
 RH0 + RT0 = ^
 RH3 + RT3 = %
 
-Leader:
-Works like an emacs/vim leader key, ex; LEADER q = ( 
+- implement some kind of abstraction over the keys for combos
+  Currently combos are named after the two Alpha that get pressed to activate them.
+  Ideally I can use the above formatting instead of that. Examples below.
+  Keymap used is Mirrored Gallium v2 
 
+  OLD WAY (E+A = '('):
+  ```c
+  enum combos {
+    EA_LPAR
+  }
+
+  const uint16_t PROGMEM ea_combo[] = {KC_E, KC_A, COMBO_END};
+
+  combo_t key_combos[] = {
+    [EA_LPAR] = COMBO(ea_combo, KC_LPRN)
+  }
+  ```
+
+  PROPOSED WAY (E+A = '('):
+  ```c
+  QMK_COMBO(lprn, KC_LPRN, LH2 LH3, ALL, 25)
+
+  API:
+  QMK_COMBO(, keycode, combo_keys[], layers, combo_term)
+  ```
+  
+  KEY POS HELPER Example 38 Key board:
+  
+  LT4 LT3 LT2 LT1 LT0    -    RT0 RT1 RT2 RT3 RT4
+  LH4 LH3 LH2 LH1 LH0    -    RH0 RH1 RH2 RH3 RH4
+  LB4 LB3 LB2 LB1 LB0 LE - RE RB0 RB1 RB2 RB3 RB4
+          L03 L02 L01    -    R01 R02 R03
+          
+  Example 38 Key Lily58 Configuration w/o Encoders:
+  // (T)op, (M)iddle, (H)ome, (B)ottom (0)Thumb L/R(E)ncoder
+
+  LT5 LT4 LT3 LT2 LT1 LT0    -    RT0 RT1 RT2 RT3 RT4 RT5
+  LM5 LM4 LM3 LM2 LM1 LM0    -    RM0 RM1 RM2 RM3 RM4 RM5
+  LH5 LH4 LH3 LH2 LH1 LH0    -    RH0 RH1 RH2 RH3 RH4 RH5
+  LB5 LB4 LB3 LB2 LB1 LB0 LE - RE RB0 RB1 RB2 RB3 RB4 RB5
+          L03 L02 L01 L00   -     R00 R01 R02 R03 
+  
+Combo Prevention tends to be handled via `require_prior_idle_ms` in ZMK don't think th
+e's anything like that in QMK
+
+Add a combo of pressing both one shot shift keys activates caps lock or caps word
