@@ -1,5 +1,5 @@
 #+TITLE: Neon keymap
 
-A keymap based on Miryoku using STRNK by Oxey for the Alphas. The symbol and number layers have also been adjusted.
+Layout based on Miryoku by manna-harbour using a QWERTY base layer.
 
 The layouts for each layer can be found in the comments of =keycap.c=
