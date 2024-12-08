@@ -9,7 +9,6 @@ enum layers {
     _NUM,
     _SYM,
     _NAV,
-    _VIM,
     _MEDIA,
     _FUN,
     _GAME
@@ -22,23 +21,21 @@ enum layers {
 // Aliases for home row mods.
 
 //    Left Side
-#define HOME_I LGUI_T(KC_I)
-#define HOME_E LALT_T(KC_E)
-#define HOME_A LCTL_T(KC_A)
-#define HOME_H LSFT_T(KC_H)
+#define HOME_A LGUI_T(KC_A)
+#define HOME_S LALT_T(KC_S)
+#define HOME_D LCTL_T(KC_D)
+#define HOME_F LSFT_T(KC_F)
 
 //    Right Side 
 // mirroring left side mods so both hands implement same functionality
 // no AltGr bull 
-#define HOME_S LSFT_T(KC_S)
-#define HOME_T LCTL_T(KC_T)
-#define HOME_R LALT_T(KC_R)
-#define HOME_N LGUI_T(KC_N)
+#define HOME_J    LSFT_T(KC_J)
+#define HOME_K    LCTL_T(KC_K)
+#define HOME_L    LALT_T(KC_L)
+#define HOME_SCLN LGUI_T(KC_SCLN)
 
-// Layer swapping TODO: FINISH IMPLEMENTATION
 #define T_MEDIA LT(_MEDIA, KC_ESC)
 #define T_NAV   LT(_NAV, KC_SPC)
-#define T_VIM   LT(_VIM, KC_TAB)
 #define T_SYM   LT(_SYM, KC_ENT)
 #define T_NUM   LT(_NUM, KC_BSPC)
 #define T_FUN   LT(_FUN, QK_REP)
@@ -50,44 +47,43 @@ enum layers {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
-/*  Alpha Layout - Mirrored Gallium v2
+/*  Alpha Layout - QWERTY
+ *  TODO: Do we need the REP on the right thumb cluster
  *
- * XXX XXX XXX XXX XXX XXX     -     XXX XXX XXX XXX XXX XXX
- * XXX  ,   U   O   F   J      -       V   C   D   L   B XXX
- * XXX  I   E   A   H   Y      -       G   S   T   R   N XXX
- * XXX  .   ;   '   P   K   -  -  \    Z   W   M   Q   X XXX
- *             OSS ESC SPC TAB - ENT BKS REP OSS
+ * XXX XXX XXX XXX XXX XXX     -     XXX XXX XXX XXX XXX GME
+ * XXX  Q   W   E   R   R      -       Y   U   I   O   P XXX
+ * REP  A   S   D   F   G      -       H   J   K   L   ; REP
+ * XXX  Z   X   C   V   B  HYP - HYP   N   M   ,   .   / XXX
+ *             OSS ESC SPC TAB - ENT  BKS REP OSS
  *
  * HOME ROW MODS: 
  * GACS - SCAG
  * OSS = One Shot Shift
  */
 
-// TODO: Update the layout to above
  [_ALPHA] = LAYOUT(
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, SW_GAME,
-  XXXXXXX, KC_COMM,    KC_U,    KC_O,    KC_F,    KC_J,                     KC_V,    KC_C,    KC_D,    KC_L,    KC_B, XXXXXXX,
-  XXXXXXX,  HOME_I,  HOME_E,  HOME_A,  HOME_H,    KC_Y,                     KC_G,  HOME_S,  HOME_T,  HOME_R,  HOME_N, XXXXXXX,
-  XXXXXXX,  KC_DOT, KC_SCLN, KC_QUOT,    KC_P,    KC_K,KC_MINUS, KC_BSLS,   KC_Z,    KC_W,    KC_M,    KC_Q,    KC_X, XXXXXXX,
-                             OS_LSFT, T_MEDIA,   T_NAV,   T_VIM,  T_SYM,  T_NUM,   T_FUN, OS_LSFT
+  XXXXXXX,  KC_Q,    KC_W,    KC_E,      KC_R,    KC_T,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, XXXXXXX,
+  QK_REP,   HOME_A,  HOME_S,  HOME_D,  HOME_F,    KC_G,                     KC_H,  HOME_J,  HOME_K,  HOME_L, HOME_SCLN,QK_REP,
+  XXXXXXX,  KC_DOT, KC_SCLN, KC_QUOT,    KC_P,    KC_K, KC_HYPR, KC_HYPR,   KC_Z,    KC_W,    KC_M,    KC_Q,    KC_X, XXXXXXX,
+                             OS_LSFT, T_MEDIA,   T_NAV,  KC_TAB,  T_SYM,  T_NUM,   T_FUN, OS_LSFT
 ),
 
 /*  Symbol Layout - Miryoku Based 
  *
  * XXX XXX XXX XXX XXX XXX      -     XXX XXX XXX XXX XXX XXX
  * XXX  {   &   *   (   }       -     XXX XXX XXX XXX XXX XXX
- * XXX  `   E   A   ^   +       -     XXX SFT CTL ALT GUI XXX
- * XXX  ?   !   @   #   |  XXX  - XXX XXX XXX XXX XXX XXX XXX
+ * XXX  ~   $   %   ^   +       -     XXX SFT CTL ALT GUI XXX
+ * XXX  |   !   @   #   ?  XXX  - HYP XXX XXX XXX XXX XXX XXX
  *             XXX  (   )   _   - ___ XXX XXX XXX	     
  * 
  */
 
-// TODO: Update the layout to above
  [_SYM] = LAYOUT(
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, KC_LCBR,  KC_AMPR,KC_ASTR, KC_LPRN, KC_RCBR,                  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  XXXXXXX, KC_TILD,  KC_DLR, KC_PERC, KC_CIRC, KC_PLUS,                  XXXXXXX, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI, KC_HYPR,
-  XXXXXXX, KC_QUES, KC_EXLM,   KC_AT, KC_HASH, KC_PIPE, XXXXXXX, XXXXXXX,XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX, KC_TILD,  KC_DLR, KC_PERC, KC_CIRC, KC_PLUS,                  XXXXXXX, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI, XXXXXXX,
+  XXXXXXX, KC_PIPE, KC_EXLM,   KC_AT, KC_HASH, KC_QUES, XXXXXXX, KC_HYPR,XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                              XXXXXXX, KC_LPRN, KC_RPRN, KC_UNDS, _______,XXXXXXX, XXXXXXX, XXXXXXX
 ),
 
@@ -98,16 +94,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * XXX XXX XXX XXX XXX XXX      -     XXX XXX XXX XXX XXX XXX
  * XXX  [   7   8   9   ]       -     XXX XXX XXX XXX XXX XXX
  * XXX  `   4   5   6   =       -     XXX SFT CTL ALT GUI XXX
- * XXX  /   1   2   3   |  XXX  - XXX XXX XXX XXX XXX XXX XXX
- *             XXX  .   0   -   - ___ XXX XXX XXX
+ * XXX  \   1   2   3   /  XXX  - HYP XXX XXX XXX XXX XXX XXX
+ *             XXX  .   0   -   - XXX ___ XXX XXX
  * 
  */
 
 [_NUM] = LAYOUT(
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, KC_LBRC,    KC_7,    KC_8,    KC_9, KC_RBRC,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  XXXXXXX,  KC_GRV,    KC_4,    KC_5,    KC_6,  KC_EQL,                   XXXXXXX, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI, KC_HYPR,
-  XXXXXXX, KC_BSLS,    KC_1,    KC_2,    KC_3, KC_SLSH, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX,  KC_GRV,    KC_4,    KC_5,    KC_6,  KC_EQL,                   XXXXXXX, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI, XXXXXXX,
+  XXXXXXX, KC_BSLS,    KC_1,    KC_2,    KC_3, KC_SLSH, XXXXXXX, KC_HYPR, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                              XXXXXXX,  KC_DOT,    KC_0, KC_MINS, XXXXXXX, _______, XXXXXXX, XXXXXXX
 ),
 
@@ -115,9 +111,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *
  * XXX XXX XXX XXX XXX XXX      -     XXX XXX XXX XXX XXX XXX
  * XXX XXX XXX XXX XXX XXX      -     DEL XXX XXX XXX XXX XXX
- * XXX XXX GUI ALT CTL SFT      -     XXX LFT DWN  UP RIT XXX
- * XXX XXX XXX XXX XXX XXX XXX  - CW  XXX HOM INS XXX END XXX
- *             XXX XXX XXX ___  - XXX XXX XXX XXX
+ * XXX XXX GUI ALT CTL SFT      -     CW  LFT DWN  UP RIT XXX
+ * XXX XXX XXX XXX XXX XXX XXX  - XXX XXX HOM INS XXX END XXX
+ *             XXX XXX ___ XXX  - XXX XXX XXX XXX
  * 
  * CW = Caps Word 
  */
@@ -125,28 +121,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_NAV] = LAYOUT(
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                     KC_DEL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  XXXXXXX, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,                    XXXXXXX, KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT, XXXXXXX, 
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, CW_TOGG,  XXXXXXX, KC_HOME,  KC_INS, XXXXXXX,  KC_END, XXXXXXX,
+  XXXXXXX, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,                    CW_TOGG, KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT, XXXXXXX, 
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_HYPR, XXXXXXX,  XXXXXXX, KC_HOME,  KC_INS, XXXXXXX,  KC_END, XXXXXXX,
                              XXXXXXX, XXXXXXX, _______, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX
-  ),
-
-/* VIM
- *
- * XXX XXX XXX XXX XXX XXX      -     XXX XXX XXX XXX XXX XXX
- * XXX XXX XXX XXX XXX XXX      -     DEL XXX XXX XXX XXX XXX
- * XXX GUI ALT CTL SFT XXX      -     XXX LFT DWN  UP RIT XXX
- * XXX XXX XXX XXX XXX XXX XXX  - CW  XXX HOM INS XXX END XXX
- *             XXX XXX XXX ___  - XXX XXX XXX XXX
- * 
- * CW = Caps Word 
- */
-
-  [_VIM] = LAYOUT(
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                    KC_DEL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  XXXXXXX, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,                   XXXXXXX,    KC_H,    KC_J,    KC_K,    KC_L, XXXXXXX,
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, CW_TOGG, XXXXXXX, KC_HOME,  KC_INS, XXXXXXX,  KC_END, XXXXXXX,
-                             XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
   ),
 
 /* MEDIA
@@ -154,7 +131,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * XXX XXX XXX XXX XXX XXX      -     XXX XXX XXX XXX XXX XXX
  * XXX XXX XXX XXX XXX XXX      -     XXX VUP VDN XXX XXX XXX
  * XXX GUI ALT CTL SFT XXX      -     PSC PRV PLY STP NXT XXX
- * XXX XXX XXX XXX XXX XXX XXX  - MUT XXX XXX XXX XXX XXX XXX
+ * XXX XXX XXX XXX XXX XXX HYP  - MUT XXX XXX XXX XXX XXX XXX
  *             XXX ___ XXX XXX  - XXX XXX XXX XXX
  * 
  * PSC = Print Screen
@@ -164,7 +141,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, KC_VOLU, KC_VOLD, XXXXXXX, XXXXXXX,
   XXXXXXX, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,                   KC_PSCR, KC_MPRV, KC_MPLY, KC_MSTP, KC_MNXT, XXXXXXX,
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MUTE, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_HYPR, KC_MUTE, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                              XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
   ),
 
