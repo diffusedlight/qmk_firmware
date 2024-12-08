@@ -28,8 +28,8 @@ enum layers {
 
 //    Right Side 
 // mirroring left side mods so both hands implement same functionality
-// no AltGr bull 
-#define HOME_J    LSFT_T(KC_J)
+// no AltGr bull, we use RSFT toggle to enable BOTH_SHIFTS_TURN_ON_CAPS_WORD
+#define HOME_J    RSFT_T(KC_J)
 #define HOME_K    LCTL_T(KC_K)
 #define HOME_L    LALT_T(KC_L)
 #define HOME_SCLN LGUI_T(KC_SCLN)
@@ -51,7 +51,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *  TODO: Do we need the REP on the right thumb cluster
  *
  * XXX XXX XXX XXX XXX XXX     -     XXX XXX XXX XXX XXX GME
- * XXX  Q   W   E   R   R      -       Y   U   I   O   P XXX
+ * XXX  Q   W   E   R   T      -       Y   U   I   O   P XXX
  * REP  A   S   D   F   G      -       H   J   K   L   ; REP
  * XXX  Z   X   C   V   B  HYP - HYP   N   M   ,   .   / XXX
  *             OSS ESC SPC TAB - ENT  BKS REP OSS
@@ -74,7 +74,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * XXX XXX XXX XXX XXX XXX      -     XXX XXX XXX XXX XXX XXX
  * XXX  {   &   *   (   }       -     XXX XXX XXX XXX XXX XXX
  * XXX  ~   $   %   ^   +       -     XXX SFT CTL ALT GUI XXX
- * XXX  |   !   @   #   ?  XXX  - HYP XXX XXX XXX XXX XXX XXX
+ * XXX  |   !   @   #   "  XXX  - HYP XXX XXX XXX XXX XXX XXX
  *             XXX  (   )   _   - ___ XXX XXX XXX	     
  * 
  */
@@ -83,7 +83,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, KC_LCBR,  KC_AMPR,KC_ASTR, KC_LPRN, KC_RCBR,                  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, KC_TILD,  KC_DLR, KC_PERC, KC_CIRC, KC_PLUS,                  XXXXXXX, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI, XXXXXXX,
-  XXXXXXX, KC_PIPE, KC_EXLM,   KC_AT, KC_HASH, KC_QUES, XXXXXXX, KC_HYPR,XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX, KC_PIPE, KC_EXLM,   KC_AT, KC_HASH, KC_DQT, XXXXXXX, KC_HYPR,XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                              XXXXXXX, KC_LPRN, KC_RPRN, KC_UNDS, _______,XXXXXXX, XXXXXXX, XXXXXXX
 ),
 
@@ -94,7 +94,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * XXX XXX XXX XXX XXX XXX      -     XXX XXX XXX XXX XXX XXX
  * XXX  [   7   8   9   ]       -     XXX XXX XXX XXX XXX XXX
  * XXX  `   4   5   6   =       -     XXX SFT CTL ALT GUI XXX
- * XXX  \   1   2   3   /  XXX  - HYP XXX XXX XXX XXX XXX XXX
+ * XXX  \   1   2   3   '  XXX  - HYP XXX XXX XXX XXX XXX XXX
  *             XXX  .   0   -   - XXX ___ XXX XXX
  * 
  */
@@ -103,7 +103,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, KC_LBRC,    KC_7,    KC_8,    KC_9, KC_RBRC,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX,  KC_GRV,    KC_4,    KC_5,    KC_6,  KC_EQL,                   XXXXXXX, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI, XXXXXXX,
-  XXXXXXX, KC_BSLS,    KC_1,    KC_2,    KC_3, KC_SLSH, XXXXXXX, KC_HYPR, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX, KC_BSLS,    KC_1,    KC_2,    KC_3, KC_QUOT, XXXXXXX, KC_HYPR, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                              XXXXXXX,  KC_DOT,    KC_0, KC_MINS, XXXXXXX, _______, XXXXXXX, XXXXXXX
 ),
 
@@ -121,7 +121,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_NAV] = LAYOUT(
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                     KC_DEL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  XXXXXXX, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,                    CW_TOGG, KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT, XXXXXXX, 
+  XXXXXXX, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,                    KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT, XXXXXXX, XXXXXXX, 
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_HYPR, XXXXXXX,  XXXXXXX, KC_HOME,  KC_INS, XXXXXXX,  KC_END, XXXXXXX,
                              XXXXXXX, XXXXXXX, _______, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX
   ),
